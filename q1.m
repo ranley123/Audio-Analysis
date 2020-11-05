@@ -5,17 +5,19 @@ freq = 261.6; % middle C frequency in Hz
 middleC = sin(2*pi*freq*time); % create sine wave
 sound(middleC, fs); % create audio player object
 % plot in time domain
+figure(1);
 title('Time Domain');
 xlabel('Time');
 ylabel('Magnitude');
 plot(time, middleC);
 
-
+figure(2);
 % plot in frequency domain
+N = length(middleC);
 fft_middleC = fft(middleC);
-fft_middleC = fftshift(fft_middleC); % range from [0, fs] to [-2/fs, 2/fs]
-f = fs/2*linspace(-1,1,fs);
-% plot(abs(fft_middleC));
-title('magnitude FFT of sine');
+f = (0:N-1) * fs/N;
+plot(f, abs(fft_middleC));
+title('Middle C in Frequency Domain');
 xlabel('Frequency (Hz)');
-ylabel('magnitude');
+ylabel('Amplitude');
+set(gca,'xticklabel',get(gca,'xtick')*1e-1);
