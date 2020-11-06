@@ -1,4 +1,4 @@
-% Question 2
+% Question 3
 [audio, audio_fs] = audioread('audio.wav');
 [music, music_fs] = audioread('music.wav');
 
